@@ -147,7 +147,7 @@ def get_video(video_id):
             while time.time() - start_time < CONFIRMATION_TIME:  # Wait 10 seconds for confirmation
                 if PENDING_REQUESTS[video_id] == "confirmed" or NEEDS_CONFIRMATION is False:
                     # Download video using appropriate method
-                    if len(video_id) == 9:  # YouTube video
+                    if len(video_id) == 11:  # YouTube video
                         youtube_url = f"https://youtu.be/{video_id}"
                         try:
                             subprocess.run(['yt-dlp', '-f', 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4', '--match-filter', f"duration<{MAX_DURATION}", '-o', file_name, youtube_url], check=True)
